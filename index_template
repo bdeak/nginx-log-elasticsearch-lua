@@ -1,0 +1,55 @@
+{
+  "template" : "INDEXTEMPLATE", 
+  "settings" : {
+    "index.refresh_interval" : "5s",
+    "number_of_shards" : 5,
+    "number_of_replicas" : 1,
+    "analysis" : {
+      "analyzer" : {
+        "default" : {
+          "type" : "standard",
+          "stopwords" : "_none_"
+        }
+      }
+    }
+  },
+  "mappings" : {
+    "INDEXTEMPLATE" : {
+       "_all" : {"enabled" : false},
+       "dynamic_templates" : [ {
+         "string_fields" : {
+           "match" : "*",
+           "match_mapping_type" : "string",
+           "mapping" : {
+             "type" : "multi_field",
+               "fields" : {
+                 "{name}" : {"type": "string", "index" : "analyzed", "omit_norms" : true, "index_options" : "docs"},
+                 "{name}.raw" : {"type": "string", "index" : "not_analyzed", "ignore_above" : 256 , "doc_values": true}
+               }
+           }
+         }
+       } ],
+       "properties" : {
+         "@version": { "type": "string", "index": "not_analyzed" },
+
+        "@timestamp" : { "format" : "dateOptionalTime", "type" : "date" },
+        "remote_addr" : { "type" : "string", "index" : "not_analyzed" , "doc_values": true},
+        "remote_user" : { "type": "string", "index" : "not_analyzed" , "doc_values": true},
+        "request" : { "type" : "string", "index" : "not_analyzed" , "doc_values": true},
+        "status" : { "type" : "long", "index" : "not_analyzed", "doc_values": true},
+        "body_bytes_sent" : { "type" : "double", "index" : "analyzed" },
+        "http_referer" : { "type" : "string", "index" : "not_analyzed" , "doc_values": true},
+        "http_user_agent"  : { "type" : "string", "index" : "not_analyzed" , "doc_values": true},
+        "http_x_forwarded_for"  : { "type" : "string", "index" : "not_analyzed" , "doc_values": true},
+        "request_time" : {  "type" : "double", "index" : "analyzed" },
+        "server_name":   { "type" : "string", "index" : "not_analyzed" , "doc_values": true},
+        "request_method" : { "type" : "string", "index" : "not_analyzed" , "doc_values": true},
+        "http_protocol" : { "type" : "string", "index" : "not_analyzed" , "doc_values": true},
+        "hostname" : { "type" : "string", "index" : "not_analyzed" , "doc_values": true},
+        "connection_serial_id" : { "type" : "integer" , "index" : "not_analyzed" , "doc_values": true},
+        "connection_requests" : { "type" : "integer" , "index" : "not_analyzed", "doc_values": true },
+        "request_start" : { "type": "date", "index" : "not_analyzed" , "doc_values": true }
+       }
+     }
+   }
+}
