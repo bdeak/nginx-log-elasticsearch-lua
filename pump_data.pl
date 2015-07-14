@@ -69,11 +69,11 @@ sub usage() {
 
             Create indexes in Elasticsearch
 
-            usage: $0 [-i indexname] [-t target] [-c] [-j template] 
+            usage: $0 [-i indexname] [-t elasticsearch API URL] [-c] [-j template] 
 
              -h        : this (help) message
              -i        : give index name
-             -t        : give target for _bulk import
+             -t        : give URL for _bulk import
              -j        : use template for index (can only be used togehter with -c)
              -c        : will create the given index ( has to be used with -i )
 
