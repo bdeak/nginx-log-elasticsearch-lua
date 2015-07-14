@@ -47,8 +47,7 @@
         "http_protocol" : { "type" : "string", "index" : "not_analyzed" , "doc_values": true},
         "hostname" : { "type" : "string", "index" : "not_analyzed" , "doc_values": true},
         "connection_serial_id" : { "type" : "integer" , "index" : "not_analyzed" , "doc_values": true},
-        "connection_requests" : { "type" : "integer" , "index" : "not_analyzed", "doc_values": true },
-        "request_start" : { "type": "date", "index" : "not_analyzed" , "doc_values": true }
+        "connection_requests" : { "type" : "integer" , "index" : "not_analyzed", "doc_values": true }
        }
      }
    }

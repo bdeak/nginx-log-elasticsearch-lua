@@ -77,7 +77,7 @@ sub usage() {
              -j        : use template for index (can only be used togehter with -c)
              -c        : will create the given index ( has to be used with -i )
 
-            example: $0 -i \$(date date "+nginx-%Y-%m-%d") -t elasticsearch.example.com
+            example: $0 -i \$(date date "+nginx-%Y-%m-%d") -t elasticsearch.example.com -j index_template
 
 EOF
 exit;
